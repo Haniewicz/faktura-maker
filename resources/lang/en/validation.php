@@ -136,13 +136,19 @@ return [
     'custom' => [
         'username' => [
             'required' => 'Nazwa użytkownika jest wymagana',
+            'max' => 'Nazwa użytkownika musi mieć maksymalnie :max znaków',
+            'min' => 'Nazwa użytkownika musi mieć minimum :min znaki',
+            'unique' => 'Użytkownik o takiej nazwie już istnieje',
         ],
         'password' => [
             'required' => 'Hasło jest wymagane',
             'confirmed' => 'Hasła muszą być takie same',
+            'min' => 'Hasło musi mieć minimum :min znaków',
         ],
         'email' => [
             'required' => 'Adres email jest wymagany',
+            'email' => 'Podaj poprawny adres email',
+            'unique' => 'Uzytkownik z takim adresem email już istnieje',
         ],
         'nip' => [
             'required' => 'NIP jest wymagany',
