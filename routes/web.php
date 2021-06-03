@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,15 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
-Route::post('/login', [MainController::class, 'login']);
-Route::post('/register', [MainController::class, 'register']);
+//Routes only for not logged users
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', [MainController::class, 'index'])->name('login');
+    Route::post('/login', [MainController::class, 'login']);
+    Route::post('/register', [MainController::class, 'register']);
+});
+
+//Routes only for logged users
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/logout', [DashboardController::class, 'logout']);
+});

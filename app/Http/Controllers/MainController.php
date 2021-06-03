@@ -23,8 +23,8 @@ class MainController extends Controller
         'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials))
+        $data = $request->all();
+        if (Auth::attempt(['name'=>$data['username'], 'password' =>$data['password']]))
         {
             return redirect()->intended('dashboard');
         }else{
