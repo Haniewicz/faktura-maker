@@ -13,6 +13,11 @@ class DashboardController extends Controller
         return view('template')->with('content', 'dashboard')->withUsers(User::get()->count());
     }
 
+    public function add_vat_view()
+    {
+        return view('template')->withContent('AddVatView');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

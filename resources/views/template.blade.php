@@ -19,13 +19,13 @@
             </header>
             <ul class="nav">
               <li>
-                <a href="#">
+                <a href="/dashboard">
                   <i class="zmdi zmdi-view-dashboard"></i> Dashboard
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <i class="zmdi zmdi-link"></i> Shortcuts
+                <a href="/add_vat">
+                  <i class="zmdi zmdi-link"></i> Wystaw nową fakturę
                 </a>
               </li>
               <li>
