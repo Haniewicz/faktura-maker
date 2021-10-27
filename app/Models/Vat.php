@@ -25,13 +25,15 @@ class Vat extends Model
         'client_street',
         'client_city',
         'client_postcode',
-        'final_price',
+        'final_price_netto',
+        'final_price_vat',
+        'final_price_brutto',
         'created_at',
         'updated_at',
     ];
 
     public function products()
     {
-        return $this->hasMany(Product:class);
+        return $this->HasMany(Product::class, 'vat_id');
     }
 }

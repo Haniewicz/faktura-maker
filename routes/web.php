@@ -25,6 +25,15 @@ Route::group(['middleware' => ['guest']], function () {
 //Routes only for logged users
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/list_vats', [DashboardController::class, 'list_vats_view']);
+
     Route::get('/add_vat', [DashboardController::class, 'add_vat_view']);
+    Route::post('/add_vat', [DashboardController::class, 'add_vat'])->name('add.vat');
+
+    Route::get('/edit_vat/{id}', [DashboardController::class, 'edit_vat_view']);
+    Route::post('/edit_vat', [DashboardController::class, 'edit_vat'])->name('edit.vat');
+
+    Route::get('/delete_vat/{id}', [DashboardController::class, 'delete_vat']);
+
     Route::get('/logout', [DashboardController::class, 'logout']);
 });

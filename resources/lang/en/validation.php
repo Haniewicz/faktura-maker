@@ -153,6 +153,45 @@ return [
         'nip' => [
             'required' => 'NIP jest wymagany',
         ],
+        'seller' => [
+            'required' => 'Nazwa sprzedawcy jest wymagana',
+        ],
+        'seller_city' => [
+            'required' => 'Miejscowość sprzedawcy jest wymagana',
+        ],
+        'seller_street' => [
+            'required' => 'Ulica sprzedawcy jest wymagana',
+        ],
+        'seller_postcode' => [
+            'required' => 'Kod pocztowy sprzedawcy jest wymagany',
+        ],
+        'client' => [
+            'required' => 'Nazwa klienta jest wymagana',
+        ],
+        'client_city' => [
+            'required' => 'Miejscowość klienta jest wymagana',
+        ],
+        'client_street' => [
+            'required' => 'Ulica klienta jest wymagana',
+        ],
+        'client_postcode' => [
+            'required' => 'Kod pocztowy klienta jest wymagany',
+        ],
+        'name.*' => [
+            'required' => 'Podaj nazwę dla każdego produktu',
+        ],
+        'price_netto.*' => [
+            'required' => 'Podaj cenę jednostkową netto dla każdego produktu',
+        ],
+        'price_brutto.*' => [
+            'required' => 'Podaj cenę jednostkową brutto dla każdego produktu',
+        ],
+        'vat_rate.*' => [
+            'required' => 'Podaj stawkę vat dla każdego produktu',
+        ],
+        'count.*' => [
+            'required' => 'Podaj liczbę produktów dla każdego produktu',
+        ],
     ],
 
     /*
