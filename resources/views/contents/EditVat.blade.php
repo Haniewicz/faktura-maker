@@ -83,7 +83,7 @@
     <table class="table table-bordered">
         <tr>
             <th >Nazwa produktu</th>
-            <th style="width: 7%;">Liczba produktów</th>
+            <th style="width: 5%;">Liczba produktów</th>
             <th style="width: 10%;">Cena jednostkowa netto</th>
             <th style="width: 10%;">Wartość całkowita netto</th>
             <th style="width: 10%;">Stawka VAT</th>
@@ -97,15 +97,15 @@
                 <tr id="{{$product->id}}">
                     <input type="hidden" name="product_id[]" value="{{$product->id}}">
                     <td><input type="text" class="form-control" name="name[]" id="name1" value="{{$product->name}}" placeholder="Nazwa produktu"></td>
-                    <td><input type="number" class="form-control" onchange="count_changed(1)" name="count[]" id="count{{$product->id}}" value="{{$product->count}}" placeholder="Liczba produktów"></td>
-                    <td><input type="text" class="form-control" onchange="change_brutto(1)" name="price_netto[]" id="price_netto{{$product->id}}" value="{{$product->price_netto}}" placeholder="Cena netto"></td>
+                    <td><input type="number" class="form-control" onchange="count_changed({{$product->id}})" name="count[]" id="count{{$product->id}}" value="{{$product->count}}" placeholder="Liczba produktów"></td>
+                    <td><input type="text" class="form-control" onchange="change_brutto({{$product->id}})" name="price_netto[]" id="price_netto{{$product->id}}" value="{{$product->price_netto}}" placeholder="Cena netto"></td>
                     <td><input type="text" class="form-control" name="summary_netto[]" id="summary_netto{{$product->id}}" value="{{$product->price_netto * $product->count}}" placeholder="Wartość całkowita netto" readonly></td>
-                    <td class="input-group"><input type="text" class="form-control" onchange="vat_changed(1)" name="vat_rate[]" id="vat_rate{{$product->id}}" value="{{$product->vat_rate}}" placeholder="Stawka VAT">
+                    <td class="input-group"><input type="text" class="form-control" onchange="vat_changed({{$product->id}})" name="vat_rate[]" id="vat_rate{{$product->id}}" value="{{$product->vat_rate}}" placeholder="Stawka VAT">
                         <span class="input-group-addon">%</span>
                     </td>
                     <td><input type="text" class="form-control" name="vat_price[]" id="vat_price{{$product->id}}" value="{{$product->price_netto * $product->vat_rate / 100}}" readonly></td>
-                    <td><input type="text" class="form-control" onchange="change_netto(1)" name="price_brutto[]" id="price_brutto{{$product->id}}" value="{{$product->price_brutto}}" placeholder="Cena brutto"></td>
-                    <td><input type="text" class="form-control" name="summary_entity[]" id="summary{{$product->id}}" value="{{$product->price_netto * $product->count}}" readonly></td>
+                    <td><input type="text" class="form-control" onchange="change_netto({{$product->id}})" name="price_brutto[]" id="price_brutto{{$product->id}}" value="{{$product->price_brutto}}" placeholder="Cena brutto"></td>
+                    <td><input type="text" class="form-control" name="summary_entity[]" id="summary{{$product->id}}" value="{{$product->price_brutto * $product->count}}" readonly></td>
                     <td><button type="button" onclick="delete_product({{$product->id}})" class="btn btn-danger">Usuń</button></td>
                 </tr>
             @endforeach

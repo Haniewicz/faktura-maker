@@ -165,6 +165,18 @@ class DashboardController extends Controller
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 
+    public function delete_product(Request $request)
+    {
+        $data = $request->all();
+        $vat = Product::find($data['id'])->delete();
+        if($vat == true)
+        {
+            return response()->json(['success'=>'Usunięto produkt.']);
+        }else{
+            return response()->json(['error'=>'Wystąpił nieoczekiwany błąd podczas próby usunięcia produktu z bazy danych.']);
+        }
+    }
+
     public function delete_vat(Request $request, $id)
     {
         $vat = Vat::find($id);

@@ -1,6 +1,24 @@
 \<script type="text/javascript">
     var id_count = 1;
     function delete_product(id){
+        if(!String(id).includes('local'))
+        {
+            var _token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "{{ route('delete.product') }}",
+                type:'POST',
+                data: {_token:_token, id:id},
+                dataType: 'json',
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        alert(data.success);
+                    }else{
+                        printErrorMsg(data.error);
+                    }
+                }
+            });
+        }
         document.getElementById(id).remove();
         summary()
     }
@@ -59,6 +77,7 @@
     function replace_dots(string)
     {
         newString = string.value.replace(",",".");
+        string.value = newString;
         return newString;
     }
 
@@ -141,19 +160,20 @@
          btn.addEventListener("click", function()
          {
              id_count += 1;
+             id_string = "_local_"+String(id_count);
              var newProduct =
-             "<tr id='local_" + id_count +"'>\
-                 <td><input type='text' class='form-control' name='local_name[]' id='name" + id_count +"' placeholder='Nazwa produktu'></td>\
-                 <td><input type='number' class='form-control' onchange='count_changed(" + id_count + ")' name='local_count[]' id='count" + id_count +"' value='1' placeholder='Liczba produktów'></td>\
-                 <td><input type='text' class='form-control' onchange='change_brutto(" + id_count + ")' name='local_price_netto[]' id='price_netto" + id_count +"' value='0.00' placeholder='Cena netto'></td>\
-                 <td><input type='text' class='form-control' name='summary_netto[]' id='summary_netto" + id_count +"' value='0.00' placeholder='Wartość całkowita netto' readonly></td>\
-                 <td class='input-group'><input type='text' class='form-control' onchange='vat_changed(" + id_count + ")' name='local_vat_rate[]' id='vat_rate" + id_count +"' value='23' placeholder='Stawka VAT'>\
+             "<tr id='" + id_string +"'>\
+                 <td><input type='text' class='form-control' name='local_name[]' id='name" + id_string +"' placeholder='Nazwa produktu'></td>\
+                 <td><input type='number' class='form-control' onchange='count_changed(\"" + id_string + "\")' name='local_count[]' id='count" + id_string +"' value='1' placeholder='Liczba produktów'></td>\
+                 <td><input type='text' class='form-control' onchange='change_brutto(\"" + id_string + "\")' name='local_price_netto[]' id='price_netto" + id_string +"' value='0.00' placeholder='Cena netto'></td>\
+                 <td><input type='text' class='form-control' name='summary_netto[]' id='summary_netto" + id_string +"' value='0.00' placeholder='Wartość całkowita netto' readonly></td>\
+                 <td class='input-group'><input type='text' class='form-control' onchange='vat_changed(\"" + id_string + "\")' name='local_vat_rate[]' id='vat_rate" + id_string +"' value='23' placeholder='Stawka VAT'>\
                      <span class='input-group-addon'>%</span>\
                  </td>\
-                 <td><input type='text' class='form-control' name='vat_price[]' id='vat_price" + id_count +"' value='0.00' readonly></td>\
-                 <td><input type='text' class='form-control' name='local_price_brutto[]' id='price_brutto" + id_count +"' onchange='change_netto(" + id_count + ")' value='0.00' placeholder='Stawka brutto'></td>\
-                 <td><input type='text' class='form-control' name='summary_entity[]' id='summary" + id_count +"' value='0.00' readonly></td>\
-                 <td><button type='button' onclick='delete_product(\"local_" + id_count +")' class='btn btn-danger'>Usuń</button></td>\
+                 <td><input type='text' class='form-control' name='vat_price[]' id='vat_price" + id_string +"' value='0.00' readonly></td>\
+                 <td><input type='text' class='form-control' name='local_price_brutto[]' id='price_brutto" + id_string +"' onchange='change_netto(\"" + id_string + "\")' value='0.00' placeholder='Stawka brutto'></td>\
+                 <td><input type='text' class='form-control' name='summary_entity[]' id='summary" + id_string +"' value='0.00' readonly></td>\
+                 <td><button type='button' onclick='delete_product(\"" + id_string +"\")' class='btn btn-danger'>Usuń</button></td>\
              </tr>";
 
              document.getElementById("products_table").insertAdjacentHTML('beforeend', newProduct);

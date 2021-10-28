@@ -82,7 +82,7 @@
     <table class="table table-bordered">
         <tr>
             <th >Nazwa produktu</th>
-            <th style="width: 7%;">Liczba produktów</th>
+            <th style="width: 5%;">Liczba produktów</th>
             <th style="width: 10%;">Cena jednostkowa netto</th>
             <th style="width: 10%;">Wartość całkowita netto</th>
             <th style="width: 10%;">Stawka VAT</th>

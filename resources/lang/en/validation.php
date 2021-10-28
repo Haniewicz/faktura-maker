@@ -192,6 +192,21 @@ return [
         'count.*' => [
             'required' => 'Podaj liczbę produktów dla każdego produktu',
         ],
+        'local_name.*' => [
+            'required' => 'Podaj nazwę dla każdego produktu',
+        ],
+        'local_price_netto.*' => [
+            'required' => 'Podaj cenę jednostkową netto dla każdego produktu',
+        ],
+        'local_price_brutto.*' => [
+            'required' => 'Podaj cenę jednostkową brutto dla każdego produktu',
+        ],
+        'local_vat_rate.*' => [
+            'required' => 'Podaj stawkę vat dla każdego produktu',
+        ],
+        'local_count.*' => [
+            'required' => 'Podaj liczbę produktów dla każdego produktu',
+        ],
     ],
 
     /*

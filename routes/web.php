@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit_vat/{id}', [DashboardController::class, 'edit_vat_view']);
     Route::post('/edit_vat', [DashboardController::class, 'edit_vat'])->name('edit.vat');
 
+    Route::post('/delete_product', [DashboardController::class, 'delete_product'])->name('delete.product');
+
     Route::get('/delete_vat/{id}', [DashboardController::class, 'delete_vat']);
 
     Route::get('/logout', [DashboardController::class, 'logout']);
