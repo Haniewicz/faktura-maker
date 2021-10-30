@@ -145,6 +145,16 @@
              "<tr id='" + id_count +"'>\
                  <td><input type='text' class='form-control' name='name[]' id='name" + id_count +"' placeholder='Nazwa produktu'></td>\
                  <td><input type='number' class='form-control' onchange='count_changed(" + id_count + ")' name='count[]' id='count" + id_count +"' value='1' placeholder='Liczba produktów'></td>\
+                 <td>\
+                     <select class='form-control' name='unit_of_measure[]'>\
+                         <option value='szt.'>szt.</option>\
+                         <option value='usł.'>usł.</option>\
+                         <option value='mies.'>mies.</option>\
+                         <option value='opak.'>opak.</option>\
+                         <option value='m2'>m2</option>\
+                         <option value='m3'>m3</option>\
+                     </select>\
+                 </td>\
                  <td><input type='text' class='form-control' onchange='change_brutto(" + id_count + ")' name='price_netto[]' id='price_netto" + id_count +"' value='0.00' placeholder='Cena netto'></td>\
                  <td><input type='text' class='form-control' name='summary_netto[]' id='summary_netto" + id_count +"' value='0.00' placeholder='Wartość całkowita netto' readonly></td>\
                  <td class='input-group'><input type='text' class='form-control' onchange='vat_changed(" + id_count + ")' name='vat_rate[]' id='vat_rate" + id_count +"' value='23' placeholder='Stawka VAT'>\
@@ -198,11 +208,15 @@
             $('input[name^="count"]').each(function() {
                 count.push(this.value);
             });
+            var unit_of_measure = [];
+            $('select[name^="unit_of_measure"]').each(function() {
+                unit_of_measure.push(this.value);
+            });
 
             $.ajax({
                 url: "{{ route('add.vat') }}",
                 type:'POST',
-                data: {_token:_token, seller:seller, seller_nip:seller_nip, seller_city:seller_city, seller_street:seller_street, seller_postcode:seller_postcode, client:client, client_nip:client_nip, client_city:client_city, client_street:client_street, client_postcode:client_postcode, name:name, price_netto:price_netto, price_brutto:price_brutto, vat_rate:vat_rate, count:count, final_netto:final_netto, final_vat:final_vat, final_brutto:final_brutto},
+                data: {_token:_token, seller:seller, seller_nip:seller_nip, seller_city:seller_city, seller_street:seller_street, seller_postcode:seller_postcode, client:client, client_nip:client_nip, client_city:client_city, client_street:client_street, client_postcode:client_postcode, name:name, price_netto:price_netto, price_brutto:price_brutto, vat_rate:vat_rate, count:count, unit_of_measure:unit_of_measure, final_netto:final_netto, final_vat:final_vat, final_brutto:final_brutto},
                 dataType: 'json',
                 success: function(data) {
                     if($.isEmptyObject(data.error)){

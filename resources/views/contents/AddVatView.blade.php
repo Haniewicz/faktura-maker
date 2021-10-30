@@ -83,6 +83,7 @@
         <tr>
             <th >Nazwa produktu</th>
             <th style="width: 5%;">Liczba produktów</th>
+            <th style="width: 5%;">Jednostka miary</th>
             <th style="width: 10%;">Cena jednostkowa netto</th>
             <th style="width: 10%;">Wartość całkowita netto</th>
             <th style="width: 10%;">Stawka VAT</th>
@@ -95,6 +96,16 @@
             <tr id="1">
                 <td><input type="text" class="form-control" name="name[]" id="name1" placeholder="Nazwa produktu"></td>
                 <td><input type="number" class="form-control" onchange="count_changed(1)" name="count[]" id="count1" value="1" placeholder="Liczba produktów"></td>
+                <td>
+                    <select class="form-control" name="unit_of_measure[]">
+                        <option value="szt.">szt.</option>
+                        <option value="usł.">usł.</option>
+                        <option value="mies.">mies.</option>
+                        <option value="opak.">opak.</option>
+                        <option value="m2">m2</option>
+                        <option value="m3">m3</option>
+                    </select>
+                </td>
                 <td><input type="text" class="form-control" onchange="change_brutto(1)" name="price_netto[]" id="price_netto1" value="0.00" placeholder="Cena netto"></td>
                 <td><input type="text" class="form-control" name="summary_netto[]" id="summary_netto1" value="0.00" placeholder="Wartość całkowita netto" readonly></td>
                 <td class="input-group"><input type="text" class="form-control" onchange="vat_changed(1)" name="vat_rate[]" id="vat_rate1" value="23" placeholder="Stawka VAT">

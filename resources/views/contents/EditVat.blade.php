@@ -84,6 +84,7 @@
         <tr>
             <th >Nazwa produktu</th>
             <th style="width: 5%;">Liczba produktów</th>
+            <th style="width: 5%;">Jednostka miary</th>
             <th style="width: 10%;">Cena jednostkowa netto</th>
             <th style="width: 10%;">Wartość całkowita netto</th>
             <th style="width: 10%;">Stawka VAT</th>
@@ -98,6 +99,16 @@
                     <input type="hidden" name="product_id[]" value="{{$product->id}}">
                     <td><input type="text" class="form-control" name="name[]" id="name1" value="{{$product->name}}" placeholder="Nazwa produktu"></td>
                     <td><input type="number" class="form-control" onchange="count_changed({{$product->id}})" name="count[]" id="count{{$product->id}}" value="{{$product->count}}" placeholder="Liczba produktów"></td>
+                    <td>
+                        <select class="form-control" name="unit_of_measure[]">
+                            <option @if($product->unit_of_measure == "szt.") selected @endif value="szt.">szt.</option>
+                            <option @if($product->unit_of_measure == "usł.") selected @endif value="usł.">usł.</option>
+                            <option @if($product->unit_of_measure == "mies.") selected @endif value="mies.">mies.</option>
+                            <option @if($product->unit_of_measure == "opak.") selected @endif value="opak.">opak.</option>
+                            <option @if($product->unit_of_measure == "m2") selected @endif value="m2">m2</option>
+                            <option @if($product->unit_of_measure == "m3") selected @endif value="m3">m3</option>
+                        </select>
+                    </td>
                     <td><input type="text" class="form-control" onchange="change_brutto({{$product->id}})" name="price_netto[]" id="price_netto{{$product->id}}" value="{{$product->price_netto}}" placeholder="Cena netto"></td>
                     <td><input type="text" class="form-control" name="summary_netto[]" id="summary_netto{{$product->id}}" value="{{$product->price_netto * $product->count}}" placeholder="Wartość całkowita netto" readonly></td>
                     <td class="input-group"><input type="text" class="form-control" onchange="vat_changed({{$product->id}})" name="vat_rate[]" id="vat_rate{{$product->id}}" value="{{$product->vat_rate}}" placeholder="Stawka VAT">

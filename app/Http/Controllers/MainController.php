@@ -38,7 +38,6 @@ class MainController extends Controller
         'username' => 'required|unique:users,name|max:20|min:4',
         'password' => 'required|min:5|confirmed',
         'email' => 'required|unique:users|email',
-        'nip' => 'required',
         ]);
 
         $data = $request->all();
@@ -46,7 +45,6 @@ class MainController extends Controller
             'name' => $data['username'],
             'password' => Hash::make($data['password']),
             'email' => $data['email'],
-            'nip' => $data['nip'],
         ]);
 
         if($check == TRUE)

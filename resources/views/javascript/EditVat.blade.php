@@ -165,6 +165,16 @@
              "<tr id='" + id_string +"'>\
                  <td><input type='text' class='form-control' name='local_name[]' id='name" + id_string +"' placeholder='Nazwa produktu'></td>\
                  <td><input type='number' class='form-control' onchange='count_changed(\"" + id_string + "\")' name='local_count[]' id='count" + id_string +"' value='1' placeholder='Liczba produktów'></td>\
+                 <td>\
+                     <select class='form-control' name='local_unit_of_measure[]'>\
+                         <option value='szt.'>szt.</option>\
+                         <option value='usł.'>usł.</option>\
+                         <option value='mies.'>mies.</option>\
+                         <option value='opak.'>opak.</option>\
+                         <option value='m2'>m2</option>\
+                         <option value='m3'>m3</option>\
+                     </select>\
+                 </td>\
                  <td><input type='text' class='form-control' onchange='change_brutto(\"" + id_string + "\")' name='local_price_netto[]' id='price_netto" + id_string +"' value='0.00' placeholder='Cena netto'></td>\
                  <td><input type='text' class='form-control' name='summary_netto[]' id='summary_netto" + id_string +"' value='0.00' placeholder='Wartość całkowita netto' readonly></td>\
                  <td class='input-group'><input type='text' class='form-control' onchange='vat_changed(\"" + id_string + "\")' name='local_vat_rate[]' id='vat_rate" + id_string +"' value='23' placeholder='Stawka VAT'>\
@@ -223,6 +233,10 @@
             $('input[name^="count"]').each(function() {
                 count.push(this.value);
             });
+            var unit_of_measure = [];
+            $('select[name^="unit_of_measure"]').each(function() {
+                unit_of_measure.push(this.value);
+            });
             var local_name = [];
             $('input[name^="local_name"]').each(function() {
                 local_name.push(this.value);
@@ -243,11 +257,15 @@
             $('input[name^="local_count"]').each(function() {
                 local_count.push(this.value);
             });
+            var local_unit_of_measure = [];
+            $('select[name^="local_unit_of_measure"]').each(function() {
+                local_unit_of_measure.push(this.value);
+            });
 
             $.ajax({
                 url: "{{ route('edit.vat') }}",
                 type:'POST',
-                data: {_token:_token, id:id, seller:seller, seller_nip:seller_nip, seller_city:seller_city, seller_street:seller_street, seller_postcode:seller_postcode, client:client, client_nip:client_nip, client_city:client_city, client_street:client_street, client_postcode:client_postcode, product_id:product_id, name:name, price_netto:price_netto, price_brutto:price_brutto, vat_rate:vat_rate, count:count, final_netto:final_netto, final_vat:final_vat, final_brutto:final_brutto, local_name:local_name, local_price_netto:local_price_netto, local_price_brutto:local_price_brutto, local_vat_rate:local_vat_rate, local_count:local_count},
+                data: {_token:_token, id:id, seller:seller, seller_nip:seller_nip, seller_city:seller_city, seller_street:seller_street, seller_postcode:seller_postcode, client:client, client_nip:client_nip, client_city:client_city, client_street:client_street, client_postcode:client_postcode, product_id:product_id, name:name, unit_of_measure:unit_of_measure, price_netto:price_netto, price_brutto:price_brutto, vat_rate:vat_rate, count:count, final_netto:final_netto, final_vat:final_vat, final_brutto:final_brutto, local_name:local_name, local_price_netto:local_price_netto, local_price_brutto:local_price_brutto, local_vat_rate:local_vat_rate, local_count:local_count, local_unit_of_measure:local_unit_of_measure,},
                 dataType: 'json',
                 success: function(data) {
                     if($.isEmptyObject(data.error)){

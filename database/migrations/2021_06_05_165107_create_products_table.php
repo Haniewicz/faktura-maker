@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('unit_of_measure');
             $table->string('price_netto', 100);
             $table->string('price_brutto', 100);
             $table->string('vat_rate', 100);

@@ -37,6 +37,7 @@ class DashboardController extends Controller
             'price_brutto.*' => 'required',
             'vat_rate.*' => 'required',
             'count.*' => 'required',
+            'unit_of_measure.*' => 'required',
         ]);
 
         if ($validator->passes())
@@ -68,7 +69,8 @@ class DashboardController extends Controller
                     'price_brutto' => $data['price_brutto'][$key],
                     'vat_rate' => $data['vat_rate'][$key],
                     'vat_id' => $vat_id,
-                    'count' => $data['count'][$key]
+                    'count' => $data['count'][$key],
+                    'unit_of_measure' => $data['unit_of_measure'][$key],
 
                 ]);
             }
@@ -107,11 +109,13 @@ class DashboardController extends Controller
             'price_brutto.*' => 'required',
             'vat_rate.*' => 'required',
             'count.*' => 'required',
+            'unit_of_measure.*' => 'required',
             'local_name.*' => 'required',
             'local_price_netto.*' => 'required',
             'local_price_brutto.*' => 'required',
             'local_vat_rate.*' => 'required',
             'local_count.*' => 'required',
+            'local_unit_of_measure.*' => 'required',
         ]);
 
         if ($validator->passes())
@@ -141,7 +145,8 @@ class DashboardController extends Controller
                     'price_brutto' => $data['price_brutto'][$key],
                     'vat_rate' => $data['vat_rate'][$key],
                     'vat_id' => $data['id'],
-                    'count' => $data['count'][$key]
+                    'count' => $data['count'][$key],
+                    'unit_of_measure' => $data['unit_of_measure'][$key]
 
                 ]);
             }
@@ -155,7 +160,8 @@ class DashboardController extends Controller
                         'price_brutto' => $data['local_price_brutto'][$key],
                         'vat_rate' => $data['local_vat_rate'][$key],
                         'vat_id' => $data['id'],
-                        'count' => $data['local_count'][$key]
+                        'count' => $data['local_count'][$key],
+                        'unit_of_measure' => $data['local_unit_of_measure'][$key]
 
                     ]);
                 }
