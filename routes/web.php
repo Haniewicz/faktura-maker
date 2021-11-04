@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VatController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EditProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,17 +29,20 @@ Route::group(['middleware' => ['guest']], function () {
 //Routes only for logged users
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-    Route::get('/list_vats', [DashboardController::class, 'list_vats_view']);
+    Route::get('/list_vats', [VatController::class, 'show_list']);
 
-    Route::get('/add_vat', [DashboardController::class, 'add_vat_view']);
-    Route::post('/add_vat', [DashboardController::class, 'add_vat'])->name('add.vat');
+    Route::get('/add_vat', [VatController::class, 'show_add']);
+    Route::post('/add_vat', [VatController::class, 'store'])->name('add.vat');
 
-    Route::get('/edit_vat/{id}', [DashboardController::class, 'edit_vat_view']);
-    Route::post('/edit_vat', [DashboardController::class, 'edit_vat'])->name('edit.vat');
+    Route::get('/edit_vat/{id}', [VatController::class, 'show_edit']);
+    Route::post('/edit_vat', [VatController::class, 'update'])->name('edit.vat');
 
-    Route::post('/delete_product', [DashboardController::class, 'delete_product'])->name('delete.product');
+    Route::post('/delete_product', [ProductController::class, 'delete'])->name('delete.product');
 
-    Route::get('/delete_vat/{id}', [DashboardController::class, 'delete_vat']);
+    Route::get('/delete_vat/{id}', [VatController::class, 'delete']);
+
+    Route::get('/profile', [EditProfileController::class, 'show']);
+    Route::post('/profile', [EditProfileController::class, 'update'])->name('edit.profile');
 
     Route::get('/logout', [DashboardController::class, 'logout']);
 });

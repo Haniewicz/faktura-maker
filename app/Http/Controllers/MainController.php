@@ -26,7 +26,7 @@ class MainController extends Controller
         $data = $request->all();
         if (Auth::attempt(['name'=>$data['username'], 'password' =>$data['password']]))
         {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('list_vats');
         }else{
             return redirect()->intended('/')->withErrors('Zła nazwa użytkownika lub hasło');
         }
@@ -49,7 +49,7 @@ class MainController extends Controller
 
         if($check == TRUE)
         {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('list_vats');
         }else{
             return redirect()->intended('/')->WithErrors('Wystąpił błąd podczas rejestracji. Spróbuj ponownie lub w innym terminie.');
         }

@@ -15,6 +15,7 @@ class Vat extends Model
      */
     protected $fillable = [
         'id',
+        'creator_id',
         'seller',
         'seller_nip',
         'seller_street',

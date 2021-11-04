@@ -15,6 +15,7 @@ class CreateVatsTable extends Migration
     {
         Schema::create('vats', function (Blueprint $table) {
             $table->id();
+            $table->integer('creator_id');
             $table->string('seller');
             $table->integer('seller_nip')->nullable();
             $table->string('seller_street');

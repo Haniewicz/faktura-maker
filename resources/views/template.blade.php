@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
+        <script type="text/javascript" src="{{ asset('AjaxSendRequest.js') }}"></script>
 
 
         <title>FakturaMaker</title>
@@ -25,8 +25,8 @@
             </header>
             <ul class="nav">
               <li>
-                <a href="/dashboard">
-                  <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+                <a href="/list_vats">
+                  <i class="zmdi zmdi-link"></i> Lista faktur
                 </a>
               </li>
               <li>
@@ -35,8 +35,8 @@
                 </a>
               </li>
               <li>
-                <a href="/list_vats">
-                  <i class="zmdi zmdi-widgets"></i> Lista faktur
+                <a href="/profile">
+                  <i class="zmdi zmdi-link"></i> Ustawienia
                 </a>
               </li>
               <li>

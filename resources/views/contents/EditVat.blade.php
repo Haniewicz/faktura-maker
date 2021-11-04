@@ -1,7 +1,7 @@
 <div class="alert alert-danger print-error-msg" style="display:none">
         <ul></ul>
     </div>
-<form id="edit_vat_form">
+<form id="EditVatForm" data-ajax="true" method="POST" action="/edit_vat">
     @csrf
     <input type="hidden" name="id" value="{{$details->id}}">
     <table style="width: 50%; margin-left:50%; margin-bottom: 20px;">

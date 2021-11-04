@@ -1,7 +1,7 @@
 <div class="alert alert-danger print-error-msg" style="display:none">
         <ul></ul>
     </div>
-<form id="add_vat_form">
+<form id="AddVatForm" data-ajax="true" method="POST" action="/add_vat">
     @csrf
     <table style="width: 50%; margin-left:50%; margin-bottom: 20px;">
         <tr>
@@ -11,13 +11,13 @@
         <tr>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputName2">  Nazwa: </label>
-                  <input type="text" name="seller" class="form-control" placeholder="Nazwa">
+                  <labe>  Nazwa: </label>
+                  <input type="text" name="seller" class="form-control" placeholder="Nazwa" value="{{$user->seller}}">
                 </div>
             </td>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputEmail2">  Nazwa: </label>
+                  <label>  Nazwa: </label>
                   <input type="text" name="client" class="form-control" placeholder="Nazwa">
                 </div>
             </td>
@@ -25,13 +25,13 @@
         <tr>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputName2">  NIP: </label>
-                  <input type="text" name="seller_nip" class="form-control" placeholder="NIP">
+                  <labe>  NIP: </label>
+                  <input type="text" name="seller_nip" class="form-control" placeholder="NIP" value="{{$user->nip}}">
                 </div>
             </td>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputEmail2">  NIP: </label>
+                  <label>  NIP: </label>
                   <input type="text" name="client_nip" class="form-control" placeholder="NIP">
                 </div>
             </td>
@@ -39,13 +39,13 @@
         <tr>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputName2">  Miejscowość: </label>
-                  <input type="text" name="seller_city" class="form-control" placeholder="Miejscowość">
+                  <labe>  Miejscowość: </label>
+                  <input type="text" name="seller_city" class="form-control" placeholder="Miejscowość" value="{{$user->city}}">
                 </div>
             </td>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputEmail2">  Miejscowość: </label>
+                  <label>  Miejscowość: </label>
                   <input type="text" name="client_city" class="form-control" placeholder="Miejscowość">
                 </div>
             </td>
@@ -53,13 +53,13 @@
         <tr>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputName2">  Ulica: </label>
-                  <input type="text" name="seller_street" class="form-control" placeholder="Ulica">
+                  <labe>  Ulica: </label>
+                  <input type="text" name="seller_street" class="form-control" placeholder="Ulica" value="{{$user->street}}">
                 </div>
             </td>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputEmail2">  Ulica: </label>
+                  <label>  Ulica: </label>
                   <input type="text" name="client_street" class="form-control" placeholder="Ulica">
                 </div>
             </td>
@@ -67,13 +67,13 @@
         <tr>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputName2">  Kod pocztowy: </label>
-                  <input type="text" name="seller_postcode" class="form-control" placeholder="Kod pocztowy">
+                  <labe>  Kod pocztowy: </label>
+                  <input type="text" name="seller_postcode" class="form-control" placeholder="Kod pocztowy" value="{{$user->postcode}}">
                 </div>
             </td>
             <td style="text-align: right;" class="form-inline">
                 <div class="form-group">
-                  <label for="exampleInputEmail2">  Kod pocztowy: </label>
+                  <label>  Kod pocztowy: </label>
                   <input type="text" name="client_postcode" class="form-control" placeholder="Kod pocztowy">
                 </div>
             </td>

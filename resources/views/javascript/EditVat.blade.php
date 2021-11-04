@@ -1,4 +1,5 @@
 \<script type="text/javascript">
+    @include("javascript.Functions.AjaxSendRequest")
     var id_count = 1;
     function delete_product(id){
         if(!String(id).includes('local'))
@@ -189,102 +190,5 @@
              document.getElementById("products_table").insertAdjacentHTML('beforeend', newProduct);
          }, false);
     }
-
-    $(document).ready(function() {
-        $(".btn-submit").click(function(e){
-            e.preventDefault();
-
-            var _token = $("input[name='_token']").val();
-            var id = $("input[name='id']").val();
-            var seller = $("input[name='seller']").val();
-            var seller_nip = $("input[name='seller_nip']").val();
-            var seller_city = $("input[name='seller_city']").val();
-            var seller_street = $("input[name='seller_street']").val();
-            var seller_postcode = $("input[name='seller_postcode']").val();
-            var client = $("input[name='client']").val();
-            var client_nip = $("input[name='client_nip']").val();
-            var client_city = $("input[name='client_city']").val();
-            var client_street = $("input[name='client_street']").val();
-            var client_postcode = $("input[name='client_postcode']").val();
-            var final_netto = $("input[name='final_netto']").val();
-            var final_vat = $("input[name='final_vat']").val();
-            var final_brutto = $("input[name='final_brutto']").val();
-            var product_id = [];
-            $('input[name^="product_id"]').each(function() {
-                product_id.push(this.value);
-            });
-            var name = [];
-            $('input[name^="name"]').each(function() {
-                name.push(this.value);
-            });
-            var price_netto = [];
-            $('input[name^="price_netto"]').each(function() {
-                price_netto.push(this.value);
-            });
-            var price_brutto = [];
-            $('input[name^="price_brutto"]').each(function() {
-                price_brutto.push(this.value);
-            });
-            var vat_rate = [];
-            $('input[name^="vat_rate"]').each(function() {
-                vat_rate.push(this.value);
-            });
-            var count = [];
-            $('input[name^="count"]').each(function() {
-                count.push(this.value);
-            });
-            var unit_of_measure = [];
-            $('select[name^="unit_of_measure"]').each(function() {
-                unit_of_measure.push(this.value);
-            });
-            var local_name = [];
-            $('input[name^="local_name"]').each(function() {
-                local_name.push(this.value);
-            });
-            var local_price_netto = [];
-            $('input[name^="local_price_netto"]').each(function() {
-                local_price_netto.push(this.value);
-            });
-            var local_price_brutto = [];
-            $('input[name^="local_price_brutto"]').each(function() {
-                local_price_brutto.push(this.value);
-            });
-            var local_vat_rate = [];
-            $('input[name^="local_vat_rate"]').each(function() {
-                local_vat_rate.push(this.value);
-            });
-            var local_count = [];
-            $('input[name^="local_count"]').each(function() {
-                local_count.push(this.value);
-            });
-            var local_unit_of_measure = [];
-            $('select[name^="local_unit_of_measure"]').each(function() {
-                local_unit_of_measure.push(this.value);
-            });
-
-            $.ajax({
-                url: "{{ route('edit.vat') }}",
-                type:'POST',
-                data: {_token:_token, id:id, seller:seller, seller_nip:seller_nip, seller_city:seller_city, seller_street:seller_street, seller_postcode:seller_postcode, client:client, client_nip:client_nip, client_city:client_city, client_street:client_street, client_postcode:client_postcode, product_id:product_id, name:name, unit_of_measure:unit_of_measure, price_netto:price_netto, price_brutto:price_brutto, vat_rate:vat_rate, count:count, final_netto:final_netto, final_vat:final_vat, final_brutto:final_brutto, local_name:local_name, local_price_netto:local_price_netto, local_price_brutto:local_price_brutto, local_vat_rate:local_vat_rate, local_count:local_count, local_unit_of_measure:local_unit_of_measure,},
-                dataType: 'json',
-                success: function(data) {
-                    if($.isEmptyObject(data.error)){
-                        alert(data.success);
-                    }else{
-                        printErrorMsg(data.error);
-                    }
-                }
-            });
-
-        });
-
-        function printErrorMsg (msg) {
-            $(".print-error-msg").find("ul").html('');
-            $(".print-error-msg").css('display','block');
-            $.each( msg, function( key, value ) {
-                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-            });
-        }
-    });
 
 </script>
