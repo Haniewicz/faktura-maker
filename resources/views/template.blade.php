@@ -12,6 +12,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="{{ asset('AjaxSendRequest.js') }}"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
         <title>FakturaMaker</title>

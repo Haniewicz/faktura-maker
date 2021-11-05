@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
@@ -10,6 +11,9 @@ use App\Models\Vat;
 use App\Models\Product;
 
 use Validator;
+use PDF;
+
+Use \Carbon\Carbon;
 
 use App\Http\Requests\AddVatRequest;
 use App\Http\Requests\EditVatRequest;
@@ -96,6 +100,20 @@ class VatController extends Controller
         $vat->products()->delete();
         $vat->delete();
         return back();
+    }
+
+    public function create_pdf(Request $request, $id)
+    {
+        $products = Vat::find($id)->products;
+        $details = Vat::find($id);
+
+        view()->share('details', $details);
+        view()->share('products', $products);
+        view()->share('actual_date', Carbon::now()->format('d/m/Y'));
+        view()->share('id', 0);
+
+        $pdf = PDF::loadView('contents.pdfview');
+        return $pdf->download('faktura '.$details->client.' '. $details->created_at->format('d/m/Y') .'.pdf');
     }
 
 }

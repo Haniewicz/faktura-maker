@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/delete_vat/{id}', [VatController::class, 'delete']);
 
+    Route::get('/create_pdf/{id}', [VatController::class, 'create_pdf']);
+
     Route::get('/profile', [EditProfileController::class, 'show']);
     Route::post('/profile', [EditProfileController::class, 'update'])->name('edit.profile');
 
